@@ -1,5 +1,4 @@
 require 'redmine'
-require_dependency 'redmine_omniauth_azure/hooks'
 
 Redmine::Plugin.register :redmine_omniauth_azure do
   name 'Redmine Omniauth Azure plugin'
@@ -16,3 +15,8 @@ Redmine::Plugin.register :redmine_omniauth_azure do
     :allowed_domains => ""
   }, :partial => 'settings/azure_settings'
 end
+
+if Rails.configuration.respond_to?(:autoloader) && Rails.configuration.autoloader == :zeitwerk
+  Rails.autoloaders.each { |loader| loader.ignore(File.dirname(__FILE__) + '/lib') }
+end
+require File.dirname(__FILE__) + '/lib/redmine_omniauth_azure'
