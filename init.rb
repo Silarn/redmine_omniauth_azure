@@ -16,7 +16,4 @@ Redmine::Plugin.register :redmine_omniauth_azure do
   }, :partial => 'settings/azure_settings'
 end
 
-if Rails.configuration.respond_to?(:autoloader) && Rails.configuration.autoloader == :zeitwerk
-  Rails.autoloaders.each { |loader| loader.ignore(File.dirname(__FILE__) + '/lib') }
-end
-require File.dirname(__FILE__) + '/lib/redmine_omniauth_azure'
+require File.dirname(__FILE__) + '/lib/redmine_omniauth_azure/hooks'
