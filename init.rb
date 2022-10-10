@@ -1,5 +1,4 @@
 require 'redmine'
-require_dependency 'redmine_omniauth_azure/hooks'
 
 Redmine::Plugin.register :redmine_omniauth_azure do
   name 'Redmine Omniauth Azure plugin'
@@ -16,3 +15,5 @@ Redmine::Plugin.register :redmine_omniauth_azure do
     :allowed_domains => ""
   }, :partial => 'settings/azure_settings'
 end
+
+require File.dirname(__FILE__) + '/lib/redmine_omniauth_azure/hooks'
